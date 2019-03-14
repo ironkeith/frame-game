@@ -1,0 +1,17 @@
+.target {
+  border-radius: 50px;
+  width: 165px;
+  height: 138px;
+}
+
+.target img {
+  max-width: 100%;
+  height: auto;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
