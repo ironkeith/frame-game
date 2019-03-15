@@ -1,4 +1,5 @@
 .target {
+  position: absolute;
   border-radius: 50px;
   width: 165px;
   height: 138px;
