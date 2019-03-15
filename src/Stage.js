@@ -2,16 +2,26 @@ import React, { Component } from 'react';
 import './Stage.css';
 
 class Stage extends Component {
+  componentWillMount() {
+    this.setState({
+      dimensions: {
+        width: 0,
+        height: 0
+      }
+    });
+  }
   componentDidMount() {
     this.setStageSize();
-    window.addEventListener('resize', this.setStageSize);
+    this.resizeWrapper = () => this.setStageSize();
+    window.addEventListener('resize', this.resizeWrapper());
   }
   componentWillUnmount() {
-    window.removeEventListener('resize', this.setStageSize);
+    window.removeEventListener('resize', this.resizeWrapper());
   }
 
   render() {
-    const { children, dimensions } = this.props;
+    const { children } = this.props;
+    const { dimensions } = this.state;
     return <div className="stage">{children(dimensions)}</div>;
   }
 
