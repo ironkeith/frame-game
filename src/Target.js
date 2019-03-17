@@ -7,11 +7,11 @@ import yay from './yay.png';
 class Target extends Component {
   render() {
     const {
-      position: { left, top }
+      position: { x, y }
     } = this.props;
     const styles = {
-      left: `${left}px`,
-      top: `${top}px`
+      left: `${x}px`,
+      top: `${y}px`
     };
     return (
       <div className="target" style={styles}>
