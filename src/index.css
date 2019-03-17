@@ -31,6 +31,12 @@ input {
   border: none;
   padding: 0.25rem 0.5rem;
 }
+textarea {
+  width: 100%;
+  font-size: 1rem;
+  font-family: monospace;
+  margin-bottom: 2rem;
+}
 
 button {
   font-size: 1.5rem;
@@ -39,6 +45,11 @@ button {
   background: turquoise;
   border: none;
   padding: 0.25rem 1rem;
+}
+
+.container {
+  max-width: 500px;
+  text-align: center;
 }
 
 .sr-only {

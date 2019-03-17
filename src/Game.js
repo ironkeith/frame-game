@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
+import Start from './Start.js';
 import Countdown from './Countdown';
 import Stage from './Stage.js';
-import Start from './Start.js';
+import Score from './Score.js';
 
 const ready = 'ready';
 const countdown = 'countdown';
@@ -23,7 +24,7 @@ const initialState = {
   gameplayFPS: 60,
   gameplayVelocity: 600,
   name: '',
-  round: { number: 0, params: { fps: 60 } },
+  round: { number: 0, params: { fps: 60, started: 0, ended: 0 } },
   scores: []
 };
 
@@ -40,9 +41,11 @@ class Game extends Component {
     const {
       gameState,
       gameplayVelocity,
+      name,
       round: {
         params: { fps }
-      }
+      },
+      scores
     } = this.state;
 
     if (gameState === ready) {
@@ -69,24 +72,32 @@ class Game extends Component {
       );
     }
 
-    return 'TODO';
+    return (
+      <Score name={name} scores={scores} onRestart={() => this.restart()} />
+    );
   }
 
   // Hooks
   countdownComplete() {
-    this.setState({
-      gameState: playing
-    });
+    this.setState(prevState => ({
+      gameState: playing,
+      round: Object.assign({}, prevState.round, { started: Date.now() })
+    }));
   }
 
   hit() {
-    this.setState({ gameState: roundComplete });
+    this.setState(prevState => ({
+      gameState: roundComplete,
+      scores: prevState.scores.concat(
+        Object.assign({}, prevState.round, { ended: Date.now() })
+      )
+    }));
     setTimeout(() => this.nextRound(), 2000);
   }
 
   restart() {
     const { name } = this.state;
-    this.setState(Object.assign({}, this.state, { name }));
+    this.setState(Object.assign({}, initialState, { name }));
   }
 
   start() {

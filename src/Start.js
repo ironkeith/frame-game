@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import './Start.css';
 
 class Start extends Component {
   render() {
     const { name, onNameChange, onStart } = this.props;
     return (
-      <div className="start">
+      <div className="container">
         <h1>Frame Game</h1>
         <p>
           Each game is five rounds. Click the bear as fast as you can, but watch
