@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import './Stage.css';
 
 class Stage extends Component {
-  componentWillMount() {
-    this.setState({
+  constructor(props) {
+    super(props);
+    this.state = {
       dimensions: {
         width: 0,
         height: 0
       }
-    });
+    };
   }
   componentDidMount() {
     this.setStageSize();
@@ -28,12 +29,12 @@ class Stage extends Component {
   setStageSize() {
     // Weird to use window, but it's easy...
     const { innerWidth, innerHeight } = window;
-    this.setState((state, props) => ({
+    this.setState({
       dimensions: {
         width: innerWidth,
         height: innerHeight
       }
-    }));
+    });
   }
 }
 
