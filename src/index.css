@@ -1,3 +1,6 @@
+html {
+  font-size: 16px;
+}
 body {
   margin: 0;
   padding: 0;
@@ -9,7 +12,43 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1 {
+  font-size: 3rem;
+  margin: 0 0 1rem;
+}
+
+p {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin: 0 0 1.5rem;
+}
+
+input {
+  font-size: 1.5rem;
+  background: hsla(0, 0, 100, 0.2);
+  border: none;
+  padding: 0.25rem 0.5rem;
+}
+
+button {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  background: turquoise;
+  border: none;
+  padding: 0.25rem 1rem;
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
 }

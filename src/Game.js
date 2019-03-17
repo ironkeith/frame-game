@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Stage from './Stage.js';
+import Start from './Start.js';
 
 const ready = 'ready';
 const countdown = 'countdown';
@@ -17,7 +18,7 @@ export const GameState = {
 };
 
 const initialState = {
-  gameState: playing,
+  gameState: ready,
   gameplayVelocity: 150,
   name: '',
   round: { number: 0, params: {} },
@@ -35,6 +36,15 @@ class Game extends Component {
   // Lifecycle events
   render() {
     const { gameplayVelocity, gameState, name, round, scores } = this.state;
+
+    if (gameState === ready) {
+      return (
+        <Start
+          onNameChange={name => this.setName(name)}
+          onStart={() => this.start()}
+        />
+      );
+    }
 
     if ([playing, roundComplete].includes(gameState)) {
       return (
@@ -82,6 +92,7 @@ class Game extends Component {
   }
 
   setName(name) {
+    console.log(name);
     this.setState({ name });
   }
 
