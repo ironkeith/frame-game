@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Countdown from './Countdown';
 import Stage from './Stage.js';
 import Start from './Start.js';
 
@@ -44,6 +45,10 @@ class Game extends Component {
           onStart={() => this.start()}
         />
       );
+    }
+
+    if (gameState === countdown) {
+      return <Countdown onComplete={() => this.countdownComplete()} />;
     }
 
     if ([playing, roundComplete].includes(gameState)) {

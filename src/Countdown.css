@@ -1,0 +1,10 @@
+.countdown_timer {
+  animation: bringtheboom 1s ease infinite;
+}
+
+@keyframes bringtheboom {
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}

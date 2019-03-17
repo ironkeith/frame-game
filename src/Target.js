@@ -21,7 +21,7 @@ class Target extends Component {
         <img
           src={isHit ? yay : hieee}
           alt="click me!"
-          className={isHit && 'target_img--hit'}
+          className={isHit ? 'target_img--hit' : ''}
         />
       </div>
     );
