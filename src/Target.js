@@ -17,7 +17,7 @@ class Target extends Component {
       top: `${y}px`
     };
     return (
-      <div className="target" style={styles} onClick={onClick}>
+      <div className="target" style={styles} onPointerDown={onClick}>
         <img
           src={isHit ? yay : hieee}
           alt="click me!"
