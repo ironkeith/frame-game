@@ -3,12 +3,17 @@
   border-radius: 50px;
   width: 165px;
   height: 138px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .target img {
   max-width: 100%;
   height: auto;
-  /* animation: spin 4s linear infinite; */
+}
+
+.target_img--hit {
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {

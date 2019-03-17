@@ -119,7 +119,6 @@ class Position extends Component {
 
     // randomize values on first run
     if (x === null || y === null) {
-      debugger;
       x = getRoundedRandom(stageWidth);
       y = getRoundedRandom(stageHeight);
     }
