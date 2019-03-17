@@ -11,7 +11,7 @@ class App extends Component {
       <div className="App">
         <Stage>
           {stageDimensions => (
-            <Position boundaries={stageDimensions} velocity={600}>
+            <Position boundaries={stageDimensions} velocity={1500}>
               {(currentPosition, reposition) => (
                 <Tick onTick={reposition} fps={60}>
                   <Target position={currentPosition} />
