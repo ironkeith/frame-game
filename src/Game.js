@@ -20,13 +20,14 @@ export const GameState = {
 
 const initialState = {
   gameState: ready,
-  gameplayVelocity: 150,
+  gameplayFPS: 60,
+  gameplayVelocity: 600,
   name: '',
-  round: { number: 0, params: {} },
+  round: { number: 0, params: { fps: 60 } },
   scores: []
 };
 
-const Rounds = [{ fps: 2 }, { fps: 30 }, { fps: 8 }, { fps: 15 }, { fps: 60 }];
+const Rounds = [{ fps: 30 }, { fps: 8 }, { fps: 15 }, { fps: 2 }, { fps: 60 }];
 
 class Game extends Component {
   constructor(props) {
@@ -36,7 +37,13 @@ class Game extends Component {
 
   // Lifecycle events
   render() {
-    const { gameplayVelocity, gameState, name, round, scores } = this.state;
+    const {
+      gameState,
+      gameplayVelocity,
+      round: {
+        params: { fps }
+      }
+    } = this.state;
 
     if (gameState === ready) {
       return (
@@ -54,6 +61,7 @@ class Game extends Component {
     if ([playing, roundComplete].includes(gameState)) {
       return (
         <Stage
+          fps={fps}
           targetHit={gameState !== playing}
           velocity={gameplayVelocity}
           onHit={() => this.hit()}
@@ -62,29 +70,18 @@ class Game extends Component {
     }
 
     return 'TODO';
-
-    // return children(gameState, name, round, scores, {
-    //   hit: () => this.hit(),
-    //   restart: () => this.restart(),
-    //   start: () => this.start(),
-    //   setName: () => this.setName(name)
-    // });
   }
-
-  componentWillUnmount() {}
 
   // Hooks
   countdownComplete() {
-    const {
-      round: { number }
-    } = this.state;
-    this.setState({ gameState: playing, round: { params: Rounds[number] } });
+    this.setState({
+      gameState: playing
+    });
   }
 
   hit() {
-    console.log('HIT');
     this.setState({ gameState: roundComplete });
-    // setTimeout(() => this.nextRound(), 3000);
+    setTimeout(() => this.nextRound(), 2000);
   }
 
   restart() {
@@ -97,7 +94,6 @@ class Game extends Component {
   }
 
   setName(name) {
-    console.log(name);
     this.setState({ name });
   }
 
@@ -108,13 +104,19 @@ class Game extends Component {
 
   nextRound() {
     let {
-      round: { number: roundNumber, params }
+      round: { number: roundNumber }
     } = this.state;
-
+    const roundParams = Rounds[roundNumber];
     roundNumber++;
-    if (roundNumber + 1 > Rounds.length) {
+    if (roundNumber > Rounds.length) {
       return this.done();
     }
+    this.setState({
+      round: {
+        number: roundNumber,
+        params: { fps: roundParams.fps }
+      }
+    });
     this.startCountdown();
   }
 

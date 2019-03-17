@@ -61,7 +61,11 @@ class Position extends Component {
   render() {
     const { children } = this.props;
     const { currentPosition } = this.state;
-    return children(currentPosition, () => this.reposition());
+    return children(
+      currentPosition,
+      () => this.reposition(),
+      () => this.stop()
+    );
   }
 
   // non-lifecycle methods
@@ -150,6 +154,13 @@ class Position extends Component {
 
   reverseY() {
     this.direction.vertical *= -1;
+  }
+
+  stop() {
+    this.setState({
+      vectors: { dx: 0, dy: 0 }
+    });
+    this.props.onStop();
   }
 }
 

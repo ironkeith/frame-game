@@ -24,17 +24,21 @@ class Stage extends Component {
   }
 
   render() {
-    const { targetHit, velocity, onHit } = this.props;
+    const { targetHit, fps, velocity, onHit } = this.props;
     const { dimensions: stageDimensions } = this.state;
     return (
       <div className="stage">
-        <Position boundaries={stageDimensions} velocity={velocity}>
-          {(currentPosition, reposition) => (
-            <Tick onTick={reposition} fps={60}>
+        <Position
+          boundaries={stageDimensions}
+          velocity={velocity}
+          onStop={onHit}
+        >
+          {(currentPosition, reposition, stop) => (
+            <Tick onTick={reposition} fps={fps}>
               <Target
                 isHit={targetHit}
                 position={currentPosition}
-                onClick={onHit}
+                onClick={stop}
               />
             </Tick>
           )}

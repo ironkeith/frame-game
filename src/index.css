@@ -52,3 +52,10 @@ button {
   width: 1px !important;
   white-space: nowrap !important;
 }
+
+@keyframes bringtheboom {
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}

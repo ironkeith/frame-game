@@ -13,11 +13,11 @@
 }
 
 .target_img--hit {
-  animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite, bringtheboom 2s ease infinite;
 }
 
 @keyframes spin {
-  100% {
+  99% {
     transform: rotate(360deg);
   }
 }
