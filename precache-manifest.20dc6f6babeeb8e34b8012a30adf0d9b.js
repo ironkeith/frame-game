@@ -20,19 +20,19 @@ self.__precacheManifest = [
     "url": "/frame-game/static/js/runtime~main.a36ec0da.js"
   },
   {
-    "revision": "a5789be14330f92c390d",
-    "url": "/frame-game/static/js/main.e01bf915.chunk.js"
+    "revision": "f9c545a0d6e37d89df92",
+    "url": "/frame-game/static/js/main.ee1c2cd1.chunk.js"
   },
   {
     "revision": "f733cd8443e37305289a",
     "url": "/frame-game/static/js/2.c6ac93ca.chunk.js"
   },
   {
-    "revision": "a5789be14330f92c390d",
+    "revision": "f9c545a0d6e37d89df92",
     "url": "/frame-game/static/css/main.8aae3753.chunk.css"
   },
   {
-    "revision": "f3d5fbb52f525fec5a4761e6f7d28a8b",
+    "revision": "07c230470bb67d2ea858161534d0a1ff",
     "url": "/frame-game/index.html"
   }
 ];
