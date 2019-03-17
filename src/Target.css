@@ -8,7 +8,7 @@
 .target img {
   max-width: 100%;
   height: auto;
-  animation: spin 4s linear infinite;
+  /* animation: spin 4s linear infinite; */
 }
 
 @keyframes spin {
