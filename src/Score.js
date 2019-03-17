@@ -26,7 +26,7 @@ class Score extends Component {
       <div className="container">
         <h1>You did it!</h1>
         <p>Please copy and share your score data</p>
-        <textarea onFocus={this.handleFocus} value={formattedScore} />
+        <textarea rows="10" onFocus={this.handleFocus} value={formattedScore} />
         <button onClick={onRestart}>Play Again</button>
       </div>
     );
