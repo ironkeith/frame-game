@@ -24,10 +24,10 @@ class Stage extends Component {
   }
 
   render() {
-    const { targetHit, fps, velocity, onHit } = this.props;
+    const { targetHit, fps, velocity, onHit, onMiss } = this.props;
     const { dimensions: stageDimensions } = this.state;
     return (
-      <div className="stage">
+      <div className="stage" onClick={onMiss}>
         <Position
           boundaries={stageDimensions}
           velocity={velocity}

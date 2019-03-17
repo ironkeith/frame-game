@@ -10,9 +10,11 @@ class Score extends Component {
         const {
           started,
           ended,
+          misses,
           params: { fps }
         } = score;
-        return `"${name}",${fps},${started},${ended}`;
+        return `"${name}",${fps},${started},${ended},${ended -
+          started},${misses}`;
       })
       .join('\n');
   };

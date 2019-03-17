@@ -24,7 +24,7 @@ const initialState = {
   gameplayFPS: 60,
   gameplayVelocity: 600,
   name: '',
-  round: { number: 0, params: { fps: 60, started: 0, ended: 0 } },
+  round: { number: 0, started: 0, ended: 0, misses: 0, params: { fps: 60 } },
   scores: []
 };
 
@@ -67,6 +67,7 @@ class Game extends Component {
           fps={fps}
           targetHit={gameState !== playing}
           velocity={gameplayVelocity}
+          onMiss={() => this.miss()}
           onHit={() => this.hit()}
         />
       );
@@ -93,6 +94,16 @@ class Game extends Component {
       )
     }));
     setTimeout(() => this.nextRound(), 2000);
+  }
+
+  miss() {
+    this.setState(prevState => {
+      return {
+        round: Object.assign({}, prevState.round, {
+          misses: prevState.round.misses + 1
+        })
+      };
+    });
   }
 
   restart() {
@@ -122,11 +133,14 @@ class Game extends Component {
     if (roundNumber > Rounds.length) {
       return this.done();
     }
-    this.setState({
-      round: {
-        number: roundNumber,
-        params: { fps: roundParams.fps }
-      }
+    this.setState(prevState => {
+      return {
+        round: Object.assign({}, prevState.round, {
+          misses: 0,
+          number: roundNumber,
+          params: { fps: roundParams.fps }
+        })
+      };
     });
     this.startCountdown();
   }
